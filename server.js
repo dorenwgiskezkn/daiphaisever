@@ -1,16 +1,9 @@
 const express = require("express");
-const path = require("path");
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-// Serve static files
-app.use(express.static("public"));
+app.use(express.static("public")); // nếu dùng thư mục public
 
-// Catch-all route to serve sub-index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "sub-index.html"));
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log("Server running on port", port);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
